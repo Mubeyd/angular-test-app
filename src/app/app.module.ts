@@ -5,12 +5,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './products/product-list/product-list.component';
 import { WelcomeComponent } from './home/welcome/welcome.component';
+import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    ConvertToSpacesPipe
   ],
   imports: [
     BrowserModule,

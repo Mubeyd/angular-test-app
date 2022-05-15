@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Angular test-app';
+  constructor() {
+    console.log('11111111111111 AppComponent constructor');
+  }
 }

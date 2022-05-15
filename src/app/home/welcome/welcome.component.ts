@@ -9,7 +9,9 @@ export class WelcomeComponent implements OnInit {
 
   pageTitle: string = 'Welcome Page'
 
-  constructor() { }
+  constructor() {
+    console.log('222222222222222 WelcomeComponent');
+   }
 
   ngOnInit(): void {
   }

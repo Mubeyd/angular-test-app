@@ -16,7 +16,9 @@ export class ProductListComponent implements OnInit, OnDestroy {
   errorMessage: string = '';
   sub!: Subscription;
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService) {
+    console.log('33333333333333 ProductListComponent');
+  }
 
   private _listFilter: string = '';
   get listFilter(): string {

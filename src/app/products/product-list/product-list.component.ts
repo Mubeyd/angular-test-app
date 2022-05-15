@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from '../product.service';
 import { IProduct } from './product';
 
 @Component({
@@ -10,7 +11,9 @@ export class ProductListComponent implements OnInit {
   pageTitle: string = 'Products List';
   imageWidth: number = 50;
   imageMargin: number = 2;
-  showImage: boolean = false;
+  showImage: boolean = true;
+
+  constructor(private productService: ProductService) {}
 
   private _listFilter: string = '';
   get listFilter(): string {
@@ -23,33 +26,11 @@ export class ProductListComponent implements OnInit {
   }
 
   filteredProducts: IProduct[] = [];
-
-  products: IProduct[] = [
-    {
-      productId: 2,
-      productName: 'Garden Cart',
-      productCode: 'GDN-0023',
-      releaseDate: 'March 18, 2021',
-      description: '15 gallon capacity rolling garden cart',
-      price: 32.99,
-      starRating: 4.2,
-      imageUrl: 'assets/images/garden_cart.png',
-    },
-    {
-      productId: 5,
-      productName: 'Hammer',
-      productCode: 'TBX-0048',
-      releaseDate: 'May 21, 2021',
-      description: 'Curved claw steel hammer',
-      price: 8.9,
-      starRating: 4.8,
-      imageUrl: 'assets/images/hammer.png',
-    },
-  ];
+  products: IProduct[] = [];
 
   performFilter(value: string): any[] {
     const filterBy = value.toLocaleLowerCase();
-    return this.products.filter((x) =>
+    return this.products.filter((x: IProduct) =>
       x.productName.toLocaleLowerCase().includes(filterBy)
     );
   }
@@ -59,11 +40,11 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.listFilter = '';
-    // this.filteredProducts = this.products
+    this.products = this.productService.getProducts();
+    this.filteredProducts = this.products;
   }
 
   onRatingClicked(message: string): void {
-    this.pageTitle = 'Products list: ' +  message
+    this.pageTitle = 'Produts list: ' + message;
   }
 }
